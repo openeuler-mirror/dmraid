@@ -9,7 +9,7 @@
 Summary: dmraid (Device-mapper RAID tool and library)
 Name: dmraid
 Version: 1.0.0.rc16
-Release: 52
+Release: 53
 License: GPLv2+
 Group: System Environment/Base
 URL: http://people.redhat.com/heinzm/sw/dmraid
@@ -151,6 +151,9 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /var/cache/logwatch/dmeventd/syslogpattern.txt
 
 %changelog
+* Sun Jul 5 2020 Zhiqiang Liu <lzhq28@mail.ustc.edu.cn> - 1.0.0.rc16-53
+- remove useless readme files.
+
 * Tue Dec 31 2019 openEuler Buildteam <buildteam@openeuler.org> - 1.0.0.rc16-52
 - Type:enhancement
 - ID:NA
