@@ -9,7 +9,7 @@
 Summary: dmraid (Device-mapper RAID tool and library)
 Name: dmraid
 Version: 1.0.0.rc16
-Release: 53
+Release: 54
 License: GPLv2+
 Group: System Environment/Base
 URL: http://people.redhat.com/heinzm/sw/dmraid
@@ -17,7 +17,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: device-mapper-devel >= 1.02.02-2
 BuildRequires: device-mapper-event-devel
 BuildRequires: libselinux-devel
-BuildRequires: libsepol-devel git
+BuildRequires: libsepol-devel git gcc
 Requires: device-mapper >= 1.02.02-2
 Requires: dmraid-events
 Requires: kpartx
@@ -151,6 +151,9 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /var/cache/logwatch/dmeventd/syslogpattern.txt
 
 %changelog
+* Tue Jun 29 2021 zhouwenpei <zhouwenpei1@huawei.com> - 1.0.0.rc16-54
+- add buildrequire gcc.
+
 * Sun Jul 5 2020 Zhiqiang Liu <lzhq28@mail.ustc.edu.cn> - 1.0.0.rc16-53
 - remove useless readme files.
 
