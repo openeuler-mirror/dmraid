@@ -1,0 +1,16 @@
+--- a/lib/Makefile.in.orig2	2023-04-19 20:20:55.138711665 +0800
++++ b/lib/Makefile.in	2023-04-19 20:21:09.846962510 +0800
+@@ -83,11 +83,11 @@ install_dmraid_libs: $(INSTALL_TARGETS)
+ 	do \
+ 		n=$$(basename $${f}) ; \
+ 		if [[ "$$n" =~ '.so$$' ]]; then \
+-			$(INSTALL) -m 555 $(STRIP) \
++			$(INSTALL) -m 755 $(STRIP) \
+ 				$$f $(libdir)/$${n}.@DMRAID_LIB_VERSION@; \
+ 			$(LN_S) -f $${n}.@DMRAID_LIB_VERSION@ $(libdir)/$${n}; \
+ 		else \
+-			$(INSTALL) -m 555 $(STRIP) $$f $(libdir)/$${n}; \
++			$(INSTALL) -m 755 $(STRIP) $$f $(libdir)/$${n}; \
+ 		fi \
+ 	done
+ 
