@@ -9,7 +9,7 @@
 Summary: dmraid (Device-mapper RAID tool and library)
 Name: dmraid
 Version: 1.0.0.rc16
-Release: 54
+Release: 55
 License: GPLv2+
 Group: System Environment/Base
 URL: http://people.redhat.com/heinzm/sw/dmraid
@@ -47,6 +47,7 @@ Patch15: 0015-dmraid-fix-errors-and-warnings-triggered-by-CFLAGS.patch
 Patch16: 0016-dmraid-fix-destdir.patch
 Patch17: 0017-dmraid-fix-missing-destdir.patch
 Patch18: 0018-dmraid-fix-so-flags.patch
+Patch19: 0019-fix-so-permission.patch
 
 %description
 DMRAID supports RAID device discovery, RAID set activation, creation,
@@ -89,6 +90,10 @@ Device failure reporting has to be activated manually by activating the
 
 %build
 %define _libdir /%{_lib}
+
+%if "%toolchain" == "clang"
+    CFLAGS="$CFLAGS -Wno-error=return-type"
+%endif
 
 %configure --prefix=/usr --sbindir=%{_sbindir} --libdir=%{_libdir} --mandir=%{_mandir} --includedir=%{_includedir} --enable-debug --disable-static_link --enable-led --enable-intel_led
 make
@@ -151,6 +156,9 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /var/cache/logwatch/dmeventd/syslogpattern.txt
 
 %changelog
+* Wed Apr 19 2023 jammyjellyfish <jammyjellyfish255@outlook.com> - 1.0.0.rc16-55
+- fix build error
+
 * Tue Jun 29 2021 zhouwenpei <zhouwenpei1@huawei.com> - 1.0.0.rc16-54
 - add buildrequire gcc.
 
